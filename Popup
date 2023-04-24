@@ -1,0 +1,38 @@
+(new-object -ComObject wscript.shell).Popup("Texto","TiempoDeEspera","TituloVentana","Tipo")
+<#
+Si no se quiere tiempo, poner 0
+El tipo es un número que indica que tipo de ventana es:
+0	Okay
+1	Aceptar Cancelar
+2	Aborto,
+Ignorar, reintentar
+3	Si,
+No, cancelar
+4	Sí No
+5	Rever,
+Cancelar
+16	Crítico
+32	Pregunta
+48	Exclamación
+64	Información
+Es posible poner varios tipos poniendo + entre ellos
+
+Para utilizar la respuesta del popup, meter toda la línea del popup en una variable y aplicar la siguiente tabla:
+1	Okay
+2	Cancelar
+3	Aborto
+4	Rever
+5	Ignorar
+6	si
+7	No
+-1	Ninguno, mensaje
+la casilla se descartó automáticamente (tiempo de espera)
+
+Por ejemplo:
+$respuesta = (new-object -ComObject wscript.shell).Popup("Pregunta de si o no","0","Pregunta","3")
+if ($respuesta -eq 6) {
+(new-object -ComObject wscript.shell).Popup("Usted ha respondido que si")
+else {
+(new-object -ComObject wscript.shell).Popup("Usted ha respondido que no")
+}
+#>
